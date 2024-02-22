@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { RecipeListPage } from "./pages/RecipeListPage";
+// import { RecipeListPage } from "./pages/RecipeListPage";
 import { RecipePage } from "./pages/RecipePage"; // import the RecipePage component
 import { Box, Heading } from "@chakra-ui/react";
+import { RecipeSearch } from "./components/RecipeSearch";
+import { data } from "./utils/data";
 
 export const App = () => {
   const [selectedRecipe, setSelectedRecipe] = useState(); // state to keep track of selected recipe
@@ -26,7 +28,8 @@ export const App = () => {
           >
             {greeting}
           </Heading>
-          <RecipeListPage clickFn={setSelectedRecipe} />
+          {/* <RecipeListPage clickFn={setSelectedRecipe} /> */}
+          <RecipeSearch items={data.hits} clickFn={setSelectedRecipe} />
         </>
       )}
     </Box>
