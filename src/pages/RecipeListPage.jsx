@@ -8,7 +8,6 @@ export const RecipeListPage = ({ items, clickFn }) => {
       justifyContent="space-around"
       alignItems="center"
       gap={8}
-      bgColor="gray.200"
     >
       {items.map((item) => (
         <RecipeItemCard clickFn={clickFn} item={item} key={item.recipe.label} />
