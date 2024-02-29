@@ -8,7 +8,7 @@ export const App = () => {
   const [selectedRecipe, setSelectedRecipe] = useState(); // state to keep track of selected recipe
 
   return (
-    <Box       bgColor="blue.100">
+    <Box minH="100vh" bgColor="blue.200">
       {selectedRecipe ? ( // conditionally render RecipePage or RecipeListPage
         <RecipePage item={selectedRecipe} clickFn={setSelectedRecipe} />
       ) : (

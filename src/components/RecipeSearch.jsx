@@ -26,9 +26,10 @@ export const RecipeSearch = ({ items, clickFn }) => {
         <Heading
           mt={8}
           textAlign="center"
-          fontSize={["16px", "20px", "24px", "28px"]}
+          fontSize={{base: "16px", md: "28px"}}
           color={"white"}
-          textShadow='1px 1px 2px #9ed2c6, 0 0 1em #9ed2c6, 0 0 0.2em #9ed2c6' 
+          textTransform="uppercase"
+          textShadow={"0px 4px 4px rgba(0, 0, 0)"}
         >
           Search for a delicious recipe
         </Heading>

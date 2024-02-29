@@ -24,7 +24,12 @@ export const RecipePage = ({ item, clickFn }) => {
       cursor="pointer"
     >
       <CardBody>
-        <Button onClick={handleBack} backgroundColor={"blue.300"}>
+        <Button
+          onClick={handleBack}
+          backgroundColor={"blue.300"}
+          color={"white"}
+          _hover={{ backgroundColor: "blue.400" }}
+        >
           Back
         </Button>
         <Image
@@ -41,7 +46,12 @@ export const RecipePage = ({ item, clickFn }) => {
           {item.recipe.label}
         </Heading>
 
-        <Flex direction={{ base: "column", md: "row" }} justifyContent="space-between" alignItems="flex-start" mt="3">
+        <Flex
+          direction={{ base: "column", md: "row" }}
+          justifyContent="space-between"
+          alignItems="flex-start"
+          mt="3"
+        >
           <Flex direction="column" flex="1">
             <VStack align="start" spacing="2">
               <Text textTransform="uppercase" color="gray" fontSize="xs">
@@ -51,10 +61,10 @@ export const RecipePage = ({ item, clickFn }) => {
                 Dish type: {item.recipe.dishType}
               </Text>
               <Text textTransform="uppercase" color="gray" fontSize="xs">
-                Total cooking time: {item.recipe.totalTime}
+                Total cooking time: {item.recipe.totalTime} minutes
               </Text>
               <Text textTransform="uppercase" color="gray" fontSize="xs">
-                Servings: {item.recipe.servings}
+                Servings: {item.recipe.yield}
               </Text>
               <Text textTransform="uppercase" color="gray" fontSize="xs">
                 Ingredients:{" "}
@@ -102,6 +112,41 @@ export const RecipePage = ({ item, clickFn }) => {
                     {caution}
                   </Tag>
                 ))}
+              </Flex>
+            </Flex>
+            <Flex direction="column" mt="4">
+              <Text textTransform="uppercase" color="gray" fontSize="xs">
+                Total Nutrients:
+              </Text>
+              <Flex direction="row" wrap="wrap" fontSize="xs">
+                <Text mr={4}>
+                  Energy:{" "}
+                  {Math.round(item.recipe.totalNutrients.ENERC_KCAL.quantity)}{" "}
+                  {item.recipe.totalNutrients.ENERC_KCAL.unit}
+                </Text>
+                <Text mr={4}>
+                  Protein:{" "}
+                  {Math.round(item.recipe.totalNutrients.PROCNT.quantity)}{" "}
+                  {item.recipe.totalNutrients.PROCNT.unit}
+                </Text>
+                <Text mr={4}>
+                  Fat: {Math.round(item.recipe.totalNutrients.FAT.quantity)}{" "}
+                  {item.recipe.totalNutrients.FAT.unit}
+                </Text>
+                <Text mr={4}>
+                  Carbs:{" "}
+                  {Math.round(item.recipe.totalNutrients.CHOCDF.quantity)}{" "}
+                  {item.recipe.totalNutrients.CHOCDF.unit}
+                </Text>
+                <Text mr={4}>
+                  Cholesterol:{" "}
+                  {Math.round(item.recipe.totalNutrients.CHOLE.quantity)}{" "}
+                  {item.recipe.totalNutrients.CHOLE.unit}
+                </Text>
+                <Text mr={4}>
+                  Sodium: {Math.round(item.recipe.totalNutrients.NA.quantity)}{" "}
+                  {item.recipe.totalNutrients.NA.unit}
+                </Text>
               </Flex>
             </Flex>
           </Flex>

@@ -1,78 +1,81 @@
 import {
-  Box,
   Card,
   Image,
   CardBody,
   Stack,
   Heading,
   Text,
-  //   Flex,
+  Flex,
 } from "@chakra-ui/react";
-// import { Tag } from "./ui/PortfolioItemPage";
+import { Tag } from "../components/ui/RecipeItems";
 
 export const RecipeItemCard = ({ item, clickFn }) => {
   return (
-    // <Card
-    //   borderRadius="xl"
-    //   w="sm"
-    //   h="30rem"
-    //   onClick={() => clickFn(item)}
-    //   cursor="pointer"
-    //   _hover={{ transform: "scale(1.05)" }}
-    // >
-    //   <CardBody>
-    //     <Image
-    //       h={64}
-    //       w="sm"
-    //       borderRadius="20px"
-    //       src={item.recipe.image}
-    //       alt={item.recipe.label}
-    //     />
-    //     <Stack mt="6" spacing="3">
-    //       <Heading size="md" color={"green.600"}>
-    //         {item.recipe.label}
-    //       </Heading>
-    //       <Text>Diet Label: {item.recipe.dietLabels.join(", ")}</Text>
-    //       <Text>Cautions: {item.recipe.cautions.join(", ")}</Text>
-    //       <Text>Meal Type: {item.recipe.mealType}</Text>
-    //       <Text>Dish Type: {item.recipe.dishType}</Text>
-    //       <Text>Health Labels: {item.recipe.healthLabels.join(", ")}</Text>
-    //       {/* <Flex gap={2}>
-    //         {item.skills.map((skill) => (
-    //           <Tag key={skill}>{skill}</Tag>
-    //         ))}
-    //       </Flex> */}
-    //     </Stack>
-    //   </CardBody>
-    // </Card>
-
-    <Box
+    <Card
       key={item.recipe.label}
-      p="4"
-      m="4"
+      backgroundColor={"gray.200"}
+      mt={8}
       borderRadius="xl"
-      w="sm"
-      h="40rem"
+      w={{ base: "350px", md: "sm"}}
+      h="500px"
+      textAlign={"center"}
       onClick={() => clickFn(item)}
       cursor="pointer"
       _hover={{ transform: "scale(1.05)" }}
     >
-      <Heading size="md" color={"green.600"}>
-        {item.recipe.label}
-      </Heading>
       <Image
-        h={64}
-        w="sm"
-        mb={2}
-        borderRadius="20px"
+        h={{ base: "200px", md: "250px" }}
+        w="100%"
+        objectFit="cover"
+        borderRadius="xl"
+        borderBottomRadius={0}
         src={item.recipe.image}
         alt={item.recipe.label}
       />
-      <Text>Diet Label: {item.recipe.dietLabels.join(", ")}</Text>
-      <Text>Cautions: {item.recipe.cautions.join(", ")}</Text>
-      <Text>Meal Type: {item.recipe.mealType}</Text>
-      <Text>Dish Type: {item.recipe.dishType}</Text>
-      <Text>Health Labels: {item.recipe.healthLabels.includes('Vegan') ? 'Vegan' : ''} {item.recipe.healthLabels.includes('Vegetarian') ? 'Vegetarian' : ''}</Text>
-    </Box>
+      <CardBody>
+        <Stack mt={2} spacing={1}>
+          <Heading size="md">{item.recipe.label}</Heading>
+          <Text textTransform="uppercase" color="gray" fontSize="xs">
+            {item.recipe.mealType}
+          </Text>
+          <Text textTransform="uppercase" color="gray" fontSize="xs">
+            Dish type: {item.recipe.dishType}
+          </Text>
+
+          <Flex direction="column" wrap="wrap" mb="2">
+            <Flex direction="row" wrap="wrap" justifyContent="center">
+              {item.recipe.dietLabels.map((diet) => (
+                <Tag bgColor="green.200" key={diet} mr="2">
+                  {diet}
+                </Tag>
+              ))}
+            </Flex>
+          </Flex>
+          <Flex direction="column" wrap="wrap">
+            <Flex direction="row" wrap="wrap" justifyContent="center">
+              {item.recipe.cautions.map((caution) => (
+                <Tag bgColor="red.200" key={caution} mr="2">
+                  {caution}
+                </Tag>
+              ))}
+            </Flex>
+          </Flex>
+          <Flex direction="column" wrap="wrap" mb="2">
+            <Flex direction="row" wrap="wrap" justifyContent="center">
+              {item.recipe.healthLabels.includes("Vegan") && (
+                <Tag bgColor="purple.200" mr="2">
+                  Vegan
+                </Tag>
+              )}
+              {item.recipe.healthLabels.includes("Vegetarian") && (
+                <Tag bgColor="purple.200" mr="2">
+                  Vegetarian
+                </Tag>
+              )}
+            </Flex>
+          </Flex>
+        </Stack>
+      </CardBody>
+    </Card>
   );
 };
