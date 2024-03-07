@@ -5,9 +5,9 @@ export const RecipeListPage = ({ items, clickFn }) => {
   return (
     <Flex
       flexWrap="wrap"
-      justifyContent="space-around"
+      justifyContent="center"
       alignItems="center"
-      gap={1}
+      gap={6}
     >
       {items.map((item) => (
         <RecipeItemCard clickFn={clickFn} item={item} key={item.recipe.label} />

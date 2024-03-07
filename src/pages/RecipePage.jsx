@@ -21,7 +21,6 @@ export const RecipePage = ({ item, clickFn }) => {
       m={"auto"}
       w={{ base: "90%", md: "50%" }}
       h="full"
-      cursor="pointer"
     >
       <CardBody>
         <Button
