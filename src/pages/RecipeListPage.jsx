@@ -7,7 +7,7 @@ export const RecipeListPage = ({ items, clickFn }) => {
       flexWrap="wrap"
       justifyContent="space-around"
       alignItems="center"
-      gap={8}
+      gap={1}
     >
       {items.map((item) => (
         <RecipeItemCard clickFn={clickFn} item={item} key={item.recipe.label} />
